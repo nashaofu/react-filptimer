@@ -1,0 +1,113 @@
+@height: 100px;
+@perspective: @height*4;
+@animSpeed: 0.3s;
+
+.fliptimer {
+  height: @height;
+  color: #fff;
+  line-height: @height;
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  font-size: @height * 0.9;
+  font-weight: bold;
+  text-align: center;
+  &-hours,
+  &-minutes,
+  &-seconds {
+    height: 100%;
+    display: inline-block;
+  }
+
+  &-seperator {
+    width: @height / 5;
+    height: 100%;
+    display: inline-block;
+  }
+
+  &-digit {
+    width: @height * 0.7;
+    height: 100%;
+    border-radius: @height / 10;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    border: 1px solid #101010;
+    display: inline-block;
+    position: relative;
+    &-item {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+
+      &-top,
+      &-bottom {
+        width: 100%;
+        height: 50%;
+        position: absolute;
+        left: 0;
+        overflow: hidden;
+      }
+
+      &-top {
+        background-color: #333;
+        border-bottom: 1px solid #333;
+        box-sizing: border-box;
+        top: 0;
+        z-index: 0;
+        border-radius: @height / 10 @height / 10 0 0;
+      }
+
+      &-bottom {
+        background-color: #333;
+        bottom: 0;
+        z-index: 0;
+        border-radius: 0 0 @height / 10 @height / 10;
+        &-val {
+          display: block;
+          transform: translateY(-50%);
+        }
+      }
+
+      &-active {
+        .fliptimer-digit-item-top {
+          z-index: 1;
+        }
+
+        .fliptimer-digit-item-bottom {
+          z-index: 2;
+          transform-origin: 50% 0%;
+          animation: flipBottom @animSpeed @animSpeed ease-out both;
+        }
+      }
+
+      &-previous {
+        .fliptimer-digit-item-top {
+          opacity: 1;
+          z-index: 2;
+          transform-origin: 50% 100%;
+          animation: flipTop @animSpeed ease-in both;
+        }
+
+        .fliptimer-digit-item-bottom {
+          z-index: 1;
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+@keyframes flipTop {
+  0% {
+    transform: perspective(@perspective) rotateX(0deg);
+  }
+  100% {
+    transform: perspective(@perspective) rotateX(-90deg);
+  }
+}
+
+@keyframes flipBottom {
+  0% {
+    transform: perspective(@perspective) rotateX(90deg);
+  }
+  100% {
+    transform: perspective(@perspective) rotateX(0deg);
+  }
+}

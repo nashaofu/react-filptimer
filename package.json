@@ -1,0 +1,41 @@
+{
+  "name": "react-filptimer",
+  "version": "0.0.1",
+  "description": "基于 react 的翻页时钟效果",
+  "main": "index.js",
+  "scripts": {
+    "start": "everest start",
+    "build": "everest build",
+    "patch": "everest patch src/Fliptimer",
+    "inspect": "everest inspect start",
+    "lint": "everest lint src --fix",
+    "serve": "everest serve build -o"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nashaofu/react-filptimer.git"
+  },
+  "keywords": [
+    "react",
+    "filp",
+    "timer",
+    "filptimer"
+  ],
+  "author": "nashaofu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nashaofu/react-filptimer/issues"
+  },
+  "homepage": "https://github.com/nashaofu/react-filptimer#readme",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "devDependencies": {
+    "@uyun/babel-preset-everest": "^0.3.22",
+    "@uyun/cli": "^0.3.22",
+    "@uyun/cli-command-patch": "^0.0.16",
+    "@uyun/eslint-config-standard": "^0.3.22",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  }
+}
